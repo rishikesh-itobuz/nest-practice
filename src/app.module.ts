@@ -2,7 +2,9 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
+import { UsersController } from './users/users.controller';
 import configuration from './config/configuration';
+import { UserService } from './users/user.service';
 
 @Module({
   imports: [
@@ -11,7 +13,7 @@ import configuration from './config/configuration';
       load: [configuration],
     }),
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, UsersController],
+  providers: [AppService, UserService],
 })
 export class AppModule {}
