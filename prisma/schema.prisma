@@ -3,10 +3,10 @@
 
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
+
 
 datasource db {
   provider = "postgresql"
@@ -14,9 +14,10 @@ datasource db {
 }
 
 model User {
-  id    Int     @default(autoincrement()) @id
+  id    String     @id @default(uuid())
   email String  @unique
   name  String?
+  password String  
   posts Post[]
 }
 
@@ -26,5 +27,5 @@ model Post {
   content   String?
   published Boolean? @default(false)
   author    User?    @relation(fields: [authorId], references: [id])
-  authorId  Int?
+  authorId  String?
 }

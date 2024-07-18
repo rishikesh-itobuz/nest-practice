@@ -7,6 +7,7 @@ async function main() {
     create: {
       email: 'alice@prisma.io',
       name: 'Alice',
+      password: 'rit#123',
       posts: {
         create: {
           title: 'Check out Prisma with Next.js',
@@ -22,6 +23,7 @@ async function main() {
     create: {
       email: 'bob@prisma.io',
       name: 'Bob',
+      password: 'abc@123',
       posts: {
         create: [
           {
@@ -38,7 +40,7 @@ async function main() {
       },
     },
   });
-  // console.log({ alice, bob });
+  console.log({ alice, bob });
 }
 main()
   .then(async () => {
