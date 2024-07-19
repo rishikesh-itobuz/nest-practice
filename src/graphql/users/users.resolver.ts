@@ -3,6 +3,7 @@ import { UsersService } from './users.service';
 import { User } from './entities/user.entity';
 import { CreateUserInput } from './dto/create-user.input';
 import { UpdateUserInput } from './dto/update-user.input';
+import { Public } from '../decorator/public.decorator';
 
 @Resolver()
 export class UsersResolver {
@@ -13,6 +14,7 @@ export class UsersResolver {
     return this.usersService.create(createUserInput);
   }
 
+  @Public()
   @Query(() => [User], { name: 'getAllUsers' })
   findAll() {
     return this.usersService.findAll();
